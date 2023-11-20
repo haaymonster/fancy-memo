@@ -16,8 +16,15 @@ def create_memo(memo:Memo):
     return {'message':'add successfully!'}
 
 @app.get('/getMemo')
-def read_memo():
+def read_memo(sortBy:str=''):
+    
+    if len(memos) > 0:
+        if sortBy == 'createTime' :
+            return sorted(memos, key=lambda x: x.id, reverse=True)
+        if sortBy == 'name':
+            return sorted(memos, key=lambda x: x.content)
     return memos
+
 
 @app.put('/updateMemo')
 def update_memo(memo: Memo):

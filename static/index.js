@@ -84,8 +84,23 @@ const submitMemo = (e) => {
   content.value = "";
 };
 
+const onSort = async (e) => {
+  e.preventDefault();
+  const sortType = document.querySelector("#sort-type");
+  console.log("sortType", sortType.value);
+  const res = await fetch(`/getMemo?sortBy=${sortType.value}`);
+  const resJson = await res.json();
+  console.log("nnn", resJson);
+  const ul = document.querySelector("#memo-list");
+  ul.innerHTML = "";
+  resJson.forEach(displayMemo);
+};
+
 const form = document.querySelector("#memo-form");
 
 form.addEventListener("submit", submitMemo);
+
+const sortForm = document.querySelector("#memo-sort");
+sortForm.addEventListener("submit", onSort);
 
 readMemo();
