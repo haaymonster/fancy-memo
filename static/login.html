@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form action="/login" id="login" method="post">
+        <div>
+            <label for="userName">User Name: </label>
+            <input type="text" name="userName" id="user-name">
+        </div>
+        <div>
+            <label for="passWord">Password: </label>
+            <input type="password" name="passWord" id="user-password">
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="./signUp.html">Sign Up</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="./login.js"></script>
+
+</body>
+
+</html>

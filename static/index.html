@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FancyMemo</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <h1>FancyMemo</h1>
+    <a href="./addProfile.html" class="setting">Setting</a>
+
+    <div id="my-profile">
+        <img id="my-avatar" />
+        <div id="my-bio"></div>
+    </div>
+
     <form id="memo-form">
-        <label for="memo-input">FancyMemo</label>
         <input type="text" placeholder="input please..." required id="memo-input" />
-        <button type="submit">Ok!</button>
+        <button type="submit">Add Memo!</button>
     </form>
+
 
 
     <form id="memo-sort">

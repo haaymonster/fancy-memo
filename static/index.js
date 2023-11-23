@@ -104,3 +104,37 @@ const sortForm = document.querySelector("#memo-sort");
 sortForm.addEventListener("submit", onSort);
 
 readMemo();
+
+function hexToBinary(hex) {
+  const bytes = [];
+  for (let i = 0; i < hex.length; i += 2) {
+    bytes.push(parseInt(hex.substr(i, 2), 16));
+  }
+  return bytes;
+}
+
+const renderProfile = (value) => {
+  const avatar = document.querySelector("#my-avatar");
+  const bio = document.querySelector("#my-bio");
+  bio.innerText = value.description;
+
+  const binaryImageData = hexToBinary(value.avatar);
+  const blob = new Blob([new Uint8Array(binaryImageData)], {
+    type: "image/jpeg",
+  });
+  // console.log("uri", value.avatar);
+  avatar.src = URL.createObjectURL(blob);
+};
+
+const getProfile = async () => {
+  const token = window.localStorage.getItem("token");
+  const res = await fetch("/getProfile", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const resJson = await res.json();
+  console.log(resJson);
+  renderProfile(resJson[0]);
+};
+getProfile();
